@@ -47,42 +47,12 @@ const generate_explation = (cvss_vector) => {
 
   let score = CVSS31.calculateCVSSFromVector(vector)
 
-  console.log(score)
-
-  var result
-  if (score.success === true) {
-    result =
-      "Base score is " +
-      score.baseMetricScore +
-      ". " +
-      "Base severity is " +
-      score.baseSeverity +
-      ". " +
-      "Temporal score is " +
-      score.temporalMetricScore +
-      ". " +
-      "Temporal severity is " +
-      score.temporalSeverity +
-      ". " +
-      "Environmental score is " +
-      score.environmentalMetricScore +
-      ". " +
-      "Environmental severity is " +
-      score.environmentalSeverity +
-      ". " +
-      "Vector string is " +
-      score.vectorString +
-      ". "
-  } else {
-    result =
-      "An error occurred. The error type is '" +
-      score.errorType +
-      "' and the metrics with errors are " +
-      score.errorMetrics +
-      "."
+  if (score.success === false) {
+    $(".error").html(`An error occurred. 
+      The error type is ${score.errorType} 
+      and the metrics with errors are ${score.errorMetrics}
+    `)
   }
-
-  $(".error").html(result)
 }
 
 $(document).ready(function () {
@@ -93,10 +63,11 @@ $(document).ready(function () {
     generate_explation(cached_cvss)
   }
 
-  // Allow the user to paste their CVSS string on page load
+  // Allow the user to paste their CVSS string right on the page load
   $("#cvss_input").focus()
   $("#cvss_input").select()
 
+  // Update the explanation when the input field changes
   $("#cvss_input").on("change keyup input", (e) => {
     localStorage.setItem("cvss_vector_cache", e.target.value)
     generate_explation(e.target.value)
