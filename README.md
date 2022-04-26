@@ -1,6 +1,8 @@
-# CVSS vector explainer
+# CVSS vector inverse calculator
 
 Converts a CVSS 3.1 vector string in a more human-readable format like most nice software does (e.g., Github)
+
+Demo URL: https://cvss.ramhacks.org/
 
 TODOs:
 
