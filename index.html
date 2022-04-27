@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="content-language" content="en-US" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Easily see the meaning of CVSS vector strings"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CVSS String2Readable</title>
+    <title>CVSS vector decorder</title>
     <script type="text/javascript" src="lib/cvsscalc31.js"></script>
     <script type="text/javascript" src="lib/cvsscalc31_helptext.js"></script>
 
@@ -53,10 +57,7 @@
   </head>
   <body>
     <main>
-      <input
-        id="cvss_input"
-        placeholder="CVSS 3.1/Somthing Somthing Somthing"
-      />
+      <input id="cvss_input" placeholder="CVSS 3.1/..." />
 
       <div class="error"></div>
 
