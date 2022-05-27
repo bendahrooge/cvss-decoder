@@ -6,10 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="description"
-      content="Easily see the meaning of CVSS vector strings"
+      content="Easily see the meaning of CVSS vector strings using this tool"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CVSS vector decorder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
     <script type="text/javascript" src="lib/cvsscalc31.js"></script>
     <script type="text/javascript" src="lib/cvsscalc31_helptext.js"></script>
 
@@ -23,12 +29,25 @@
       * {
         margin: 0;
         padding: 0;
+        font-family: "Open Sans", sans-serif;
       }
 
-      input {
-        width: 100vw;
-        height: 5vh;
-        font-size: 2rem;
+      main {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 1rem;
+      }
+
+      textarea {
+        width: calc(100%);
+        resize: none;
+        font-size: 1.5rem;
+        border: none;
       }
 
       .section {
@@ -39,32 +58,48 @@
       h2 {
         padding: 1rem;
         padding-left: 2rem;
-        background-color: aquamarine;
+        margin-top: 1rem;
+
+        background-color: rgb(112, 112, 112);
+        color: white;
       }
 
       .cvss_explaination {
         display: flex;
-        flex-wrap: wrap;
+        /* justify-content: space-between; */
         /* gap: 1rem; */
       }
 
       .cvss_explaination > div {
         padding: 1rem;
-        max-width: 40vw;
-        width: 100%;
+        width: 50%;
+        /* max-width: 40vw; */
       }
     </style>
   </head>
   <body>
     <main>
-      <input id="cvss_input" placeholder="CVSS 3.1/..." />
+      <h1>CVSS 3.1 Vector Decorder</h1>
+      <textarea id="cvss_input" placeholder="CVSS 3.1/..."></textarea>
 
       <div class="error"></div>
 
       <h2>Base Score</h2>
 
       <div class="section">
-        <div class="cvss_explaination"></div>
+        <div class="cvss_explaination base_score"></div>
+      </div>
+
+      <h2>Temporal Score</h2>
+
+      <div class="section">
+        <div class="cvss_explaination temporal_score"></div>
+      </div>
+
+      <h2>Enviromental Score</h2>
+
+      <div class="section">
+        <div class="cvss_explaination environmental_score"></div>
       </div>
     </main>
   </body>
