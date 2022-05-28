@@ -66,17 +66,8 @@ const decode = (cvss_vector) => {
 }
 
 $(document).ready(function () {
-  // Pull last string from browser cache
-  // let cached_cvss = localStorage.getItem("cvss_vector_cache")
-  // if (cached_cvss) {
-  //   $("#cvss_input").val(cached_cvss)
-  //   decode(cached_cvss)
-  // }
-
   // Update the explanation when the input field changes
   $("#cvss_input").on("change keyup input", (e) => {
-    localStorage.setItem("cvss_vector_cache", e.target.value)
-    decode(e.target.value)
     window.location.hash = e.target.value
   })
 
@@ -85,6 +76,15 @@ $(document).ready(function () {
     $("#cvss_input").val(window.location.hash.substring(1))
     decode(window.location.hash.substring(1))
   }
+
+  window.addEventListener(
+    "hashchange",
+    function () {
+      $("#cvss_input").val(window.location.hash.substring(1))
+      decode(window.location.hash.substring(1))
+    },
+    false
+  )
 
   // Allow the user to paste their CVSS string right on the page load
   $("#cvss_input").focus()
