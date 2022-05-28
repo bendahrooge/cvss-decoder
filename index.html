@@ -9,7 +9,7 @@
       content="Easily see the meaning of CVSS vector strings using this tool"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CVSS vector decorder</title>
+    <title>CVSS decoder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,7 +24,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="src/main.js"></script>
+    <script src="src/main.js" type="module"></script>
     <style>
       * {
         margin: 0;
@@ -55,13 +55,20 @@
         padding: 1rem;
       }
 
-      h2 {
+      .title {
+        display: flex;
+        /* justify-content: space-between; */
+        align-items: center;
         padding: 1rem;
         padding-left: 2rem;
         margin-top: 1rem;
 
         background-color: rgb(112, 112, 112);
         color: white;
+      }
+
+      .title > h2 {
+        width: 90%;
       }
 
       .cvss_explaination {
@@ -75,29 +82,33 @@
         width: 50%;
         /* max-width: 40vw; */
       }
+
+      .category_score {
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        width: 100px;
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>CVSS 3.1 Vector Decorder</h1>
+      <h1>CVSS 3.1 Vector Decoder</h1>
       <textarea id="cvss_input" placeholder="CVSS 3.1/..."></textarea>
 
       <div class="error"></div>
 
-      <h2>Base Score</h2>
-
+      <div class="title base_title"><h2>Base Score</h2></div>
       <div class="section">
         <div class="cvss_explaination base_score"></div>
       </div>
 
-      <h2>Temporal Score</h2>
-
+      <div class="title temporal_title"><h2>Temporal Score</h2></div>
       <div class="section">
         <div class="cvss_explaination temporal_score"></div>
       </div>
 
-      <h2>Enviromental Score</h2>
-
+      <div class="title environmental_title"><h2>Enviromental Score</h2></div>
       <div class="section">
         <div class="cvss_explaination environmental_score"></div>
       </div>
