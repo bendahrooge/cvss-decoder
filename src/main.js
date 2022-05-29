@@ -21,6 +21,11 @@ const generate_explation = (cvss_vector, criteria, el) => {
     }
   }
 
+  if (columns[0].length === 0 && columns[1].length === 0) {
+    $(el).append(`<div>No attributes in this category</div>`)
+    return
+  }
+
   for (let column of columns) {
     $(el).append(`<div>${column}</div>`)
   }
