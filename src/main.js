@@ -38,7 +38,9 @@ const decode = (cvss_vector) => {
       The error type is ${score.errorType}
       and the metrics with errors are ${score.errorMetrics}
     `)
-    $(".base_score, .temporal_score, .environmental_score").html("")
+    $(
+      ".base_score, .temporal_score, .environmental_score, .category_score"
+    ).html("")
     return
   }
 
