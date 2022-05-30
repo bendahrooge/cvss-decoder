@@ -26,82 +26,27 @@
     ></script>
     <script src="src/main.js" type="module"></script>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: "Open Sans", sans-serif;
-      }
-
-      main {
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      h1 {
-        text-align: center;
-        margin: 1rem;
-      }
-
-      textarea {
-        width: calc(100%);
-        resize: none;
-        font-size: 1.5rem;
-        border: none;
-      }
-
-      .section {
-        background-color: #eee;
-        padding: 1rem;
-      }
-
-      .title {
-        display: flex;
-        /* justify-content: space-between; */
-        align-items: center;
-        padding: 1rem;
-        padding-left: 2rem;
-        margin-top: 1rem;
-
-        background-color: rgb(112, 112, 112);
-        color: white;
-      }
-
-      .title > h2 {
-        width: 90%;
-      }
-
-      .cvss_explaination {
-        display: flex;
-        /* justify-content: space-between; */
-        /* gap: 1rem; */
-      }
-
-      .cvss_explaination > div {
-        padding: 1rem;
-        width: 50%;
-        /* max-width: 40vw; */
-      }
-
-      .category_score {
-        text-align: center;
-        padding: 10px;
-        border-radius: 10px;
-        width: 100px;
-      }
+      @import url(src/style.css);
     </style>
   </head>
   <body>
     <main>
       <h1>CVSS 3.1 Vector Decoder</h1>
-      <textarea id="cvss_input" placeholder="CVSS 3.1/..."></textarea>
+      <header>
+        <textarea
+          id="cvss_input"
+          class="cvss_vector input"
+          placeholder="CVSS 3.1/..."
+        ></textarea>
+        <div class="cvss_vector colorful"></div>
 
-      <div class="error">
-        Paste a CVSS 3.1 vector into the box above, to
-        <a href="#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
-          >try a sample one</a
-        >
-      </div>
+        <div class="error">
+          Paste a CVSS 3.1 vector into the box above, to
+          <a href="#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+            >try a sample one</a
+          >
+        </div>
+      </header>
 
       <div class="title base_title"><h2>Base Score</h2></div>
       <div class="section">
