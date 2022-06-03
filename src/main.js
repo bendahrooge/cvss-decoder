@@ -24,7 +24,7 @@ const generate_explation = (
     if (criteria[category_label]) {
       columns[criteria[category_label]["_column"]] += `<div class="active">${
         criteria[category_label]["_name"]
-      } = <div style="display: inline; background-color: ${
+      } = <div style="display: inline; border-bottom: 3px solid ${
         colorful
           ? "hsl(" + ((printed[0]++ * (360 / attributes)) % 360) + ",100%,50%);"
           : "none"
@@ -145,8 +145,8 @@ $(document).ready(function () {
     "hashchange",
     function () {
       $("#cvss_input").val(window.location.hash.substring(1))
+      decode(window.location.hash.substring(1), false)
       // $("#cvss_input").blur()
-      decode(window.location.hash.substring(1), true)
     },
     false
   )
@@ -157,12 +157,15 @@ $(document).ready(function () {
     decode(window.location.hash.substring(1), false)
   })
 
-  $("#cvss_input").blur(() => {
+  const rerenderColors = () => {
     if ($("#cvss_input").val().length === 0) return
     $("#cvss_input").hide()
     $(".colorful").show()
     decode(window.location.hash.substring(1), true)
-  })
+  }
+
+  $("#cvss_input").on("blur focusout", rerenderColors)
+  $("a").on("click", rerenderColors)
 
   $(".colorful").click(() => {
     $("#cvss_input").show()
