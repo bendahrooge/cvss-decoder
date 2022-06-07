@@ -76,6 +76,7 @@
     padding: 10px;
     border-radius: 10px;
     width: 100px;
+    text-shadow: 1px 1px 8px black;
   }
 
   /* Keep header at the top of page when scrolling */

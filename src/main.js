@@ -43,7 +43,9 @@ const generate_explation = (
 }
 
 const category_score = (score, severity) => {
-  return `<div class="category_score">${score} <br /> ${severity}</div>`
+  return `<div class="category_score" style="background-color: hsl(${
+    (150 - score * 15) % 360
+  },100%,50%);">${score} <br /> ${severity}</div>`
 }
 
 // @todo @refactor
@@ -159,6 +161,8 @@ $(document).ready(function () {
 
   const rerenderColors = () => {
     if ($("#cvss_input").val().length === 0) return
+    if ($(".error").text().indexOf("error") > -1) return
+
     $("#cvss_input").hide()
     $(".colorful").show()
     decode(window.location.hash.substring(1), true)
