@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="description"
-      content="Easily see the meaning of CVSS vector strings using this tool"
+      content="Easily see the meaning of CVSS vector strings using this tool."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CVSS decoder</title>
@@ -32,6 +32,10 @@
   <body>
     <main>
       <h1>CVSS 3.1 Vector Decoder</h1>
+      <p>
+        Online tool for decoding CVSS vector strings. Check out this project on
+        <a href="https://github.com/bendahrooge/cvss-decoder">Github</a>
+      </p>
       <header>
         <textarea
           id="cvss_input"
@@ -42,7 +46,9 @@
 
         <div class="error">
           Paste a CVSS 3.1 vector into the box above, to
-          <a href="#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+          <a
+            href="#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+            onclick="setTimeout(() => $('#cvss_input').blur(), 100)"
             >try a sample one</a
           >
         </div>

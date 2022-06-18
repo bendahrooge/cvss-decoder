@@ -10,7 +10,7 @@
     margin-right: auto;
   }
 
-  h1 {
+  h1, p {
     text-align: center;
     margin: 1rem;
   }
