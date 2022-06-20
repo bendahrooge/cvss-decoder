@@ -22,11 +22,14 @@ const generate_explation = (
   for (let category of cvss_categories) {
     let [category_label, category_value] = category.toLowerCase().split(":")
     if (criteria[category_label]) {
-      columns[criteria[category_label]["_column"]] += `<div class="active">${
+      printed[0]++
+      columns[criteria[category_label]["_column"]] += `<div>${
         criteria[category_label]["_name"]
-      } = <div style="display: inline; border-bottom: 3px solid ${
+      } = <div class="metric metric_long" data-item="${
+        printed[0]
+      }" style="display: inline; border-bottom: 3px solid ${
         colorful
-          ? "hsl(" + ((printed[0]++ * (360 / attributes)) % 360) + ",100%,50%);"
+          ? "hsl(" + ((printed[0] * (360 / attributes)) % 360) + ",100%,50%);"
           : "none"
       };">${criteria[category_label][category_value]}</div></div>`
     }
@@ -120,14 +123,27 @@ const decode = (cvss_vector, colorful = true) => {
         colorful_vector += attributes[element]
       } else {
         let [prefix, value] = attributes[element].split(":")
-        colorful_vector += `/${prefix}:<div style="display: inline; border-bottom: 3px solid hsl(${
-          (printed[0]++ * (360 / attributesCount)) % 360
+        printed[0]++
+        colorful_vector += `/${prefix}:<div class="metric metric_short" data-item="${
+          printed[0]
+        }" style="display: inline; border-bottom: 3px solid hsl(${
+          (printed[0] * (360 / attributesCount)) % 360
         },100%,50%);">${value}</div>`
       }
     }
 
     $(".colorful").html(`${colorful_vector}`)
   }
+
+  $(".metric").on("mouseenter", (el) => {
+    let item_id = $(el.target).attr("data-item")
+    $(`.metric[data-item='${item_id}']`).addClass("hover_match")
+  })
+
+  $(".metric").on("mouseleave", (el) => {
+    let item_id = $(el.target).attr("data-item")
+    $(`.metric[data-item='${item_id}']`).removeClass("hover_match")
+  })
 }
 
 $(document).ready(function () {

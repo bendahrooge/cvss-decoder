@@ -92,3 +92,11 @@
       overflow-wrap: break-word;
       display: none;
   }
+
+  .metric {
+    cursor: pointer;
+  }
+
+  .hover_match {
+    background-color: yellow;
+  }
