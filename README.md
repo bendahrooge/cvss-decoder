@@ -2,7 +2,7 @@
 
 Converts a CVSS 3.1 vector string in a more human-readable format like most nice software does (e.g., Github, Microsoft Azure)
 
-Demo URL: https://cvss.ramhacks.org/
+Demo URL: https://bendahrooge.github.io/cvss-decoder/
 
 TODOs/Help Wanted:
 
